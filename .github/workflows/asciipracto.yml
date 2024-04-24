@@ -1,0 +1,23 @@
+name: Build Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Generate PDF
+      run: asciidoctor-pdf documentation.adoc -o documentation.pdf
+
+    - name: Upload PDF Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: documentation.pdf
