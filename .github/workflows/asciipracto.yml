@@ -14,8 +14,11 @@ jobs:
       uses: actions/checkout@v2
 
     # Install AsciiDoc
-    - name: Install Asciidoc
-      run: sudo apt-get update && sudo apt-get install -y asciidoctor
+    - name: Install Asciidoctor and Asciidoctor PDF
+      run: |
+        sudo apt-get update 
+        sudo apt-get install -y asciidoctor
+        gem install asciidoctor-pdf --pre
 
     # Generate PDF from AsciiDoc source
     - name: Generate PDF
